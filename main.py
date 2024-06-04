@@ -3,7 +3,8 @@ import sys
 import moderngl as mgl
 import pygame as pg
 
-from setting import *
+from shader_program import *
+from scene import Scene
 
 
 class VoxelEngine:
@@ -24,15 +25,24 @@ class VoxelEngine:
         self.delta_time = 0
         self.time = 0
 
-        self.is_running = False
+        self.is_running = True
+        self.on_init()
+
+    def on_init(self):
+        self.shader_program = ShaderProgram(self)
+        self.scene = Scene(self)
+
 
     def update(self):
+        self.shader_program.update()
+        self.scene.update()
         self.delta_time = self.clock.tick()
         self.time = pg.time.get_ticks() * 0.001
         pg.display.set_caption(f'Fps {self.clock.get_fps():.0f}')
 
     def render(self):
         self.ctx.clear(color=BG_COLOR)
+        self.scene.render()
         pg.display.flip()
 
     def handle_events(self):
@@ -41,7 +51,6 @@ class VoxelEngine:
                 self.is_running = False
 
     def run(self):
-        self.is_running = True
         while self.is_running:
             self.handle_events()
             self.update()
