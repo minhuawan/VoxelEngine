@@ -8,6 +8,7 @@ class ShaderProgram:
 
         # ------- shaders ------ #
         self.quad = self.get_program(shader_name='quad')
+        self.triangle = self.get_program(shader_name='triangle')
         self.set_uniforms_on_init()
 
     def set_uniforms_on_init(self):
