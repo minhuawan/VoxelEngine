@@ -1,3 +1,5 @@
+import glm
+
 from settings import *
 from meshs.chunk_mesh import ChunkMesh
 
@@ -24,5 +26,7 @@ class Chunk:
             for y in range(CHUNK_SIZE):
                 for z in range(CHUNK_SIZE):
                     # see @docs/capture_chunk_index_3d_to_1d.png
-                    voxels[x + CHUNK_SIZE * z + CHUNK_AREA * y] = x + y + z  # face_id
+                    voxels[x + CHUNK_SIZE * z + CHUNK_AREA * y] = (
+                        x + y + z if int(glm.simplex(glm.vec3(x, y, z) * 0.1) + 1) else 0
+                    )
         return voxels
