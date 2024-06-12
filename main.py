@@ -6,6 +6,7 @@ import pygame as pg
 from shader_program import *
 from scene import Scene
 from player import Player
+from textures import Texture
 
 
 class VoxelEngine:
@@ -33,10 +34,10 @@ class VoxelEngine:
         self.on_init()
 
     def on_init(self):
+        self.texture = Texture(self)
         self.player = Player(self)
         self.shader_program = ShaderProgram(self)
         self.scene = Scene(self)
-
 
     def update(self):
         self.player.update()

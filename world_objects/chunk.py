@@ -24,5 +24,5 @@ class Chunk:
             for y in range(CHUNK_SIZE):
                 for z in range(CHUNK_SIZE):
                     # see @docs/capture_chunk_index_3d_to_1d.png
-                    voxels[x + CHUNK_SIZE * z + CHUNK_AREA * y] = x + y + z
+                    voxels[x + CHUNK_SIZE * z + CHUNK_AREA * y] = x + y + z  # face_id
         return voxels

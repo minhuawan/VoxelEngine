@@ -44,7 +44,7 @@ def build_chunk_mesh(chunk_voxels, format_size):
                     index = add_data(vertex_data, index, v0, v3, v2, v0, v2, v1)
 
                 # bottom face
-                if is_void((x, y - 1 , z), chunk_voxels):
+                if is_void((x, y - 1, z), chunk_voxels):
                     # @formatter:off
                     v0 = (x    , y, z    , voxel_id, 1)
                     v1 = (x + 1, y, z    , voxel_id, 1)
@@ -87,10 +87,10 @@ def build_chunk_mesh(chunk_voxels, format_size):
                 # front face
                 if is_void((x, y, z + 1), chunk_voxels):
                     # @formatter:off
-                    v0 = (x,     y,     z + 1, voxel_id, 4)
-                    v1 = (x,     y + 1, z + 1, voxel_id, 4)
-                    v2 = (x + 1, y + 1, z + 1, voxel_id, 4)
-                    v3 = (x + 1, y,     z + 1, voxel_id, 4)
+                    v0 = (x,     y,     z + 1, voxel_id, 5)
+                    v1 = (x,     y + 1, z + 1, voxel_id, 5)
+                    v2 = (x + 1, y + 1, z + 1, voxel_id, 5)
+                    v3 = (x + 1, y,     z + 1, voxel_id, 5)  # 5 is face_id
                     # @formatter:on
                     index = add_data(vertex_data, index, v0, v2, v1, v0, v3, v2)
 
