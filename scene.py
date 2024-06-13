@@ -1,6 +1,4 @@
-from meshs.quad_mesh import QuadMesh
-from meshs.triangle_mesh import TriangleMesh
-from world_objects.chunk import Chunk
+from world import World
 
 
 class Scene:
@@ -8,12 +6,14 @@ class Scene:
         self.app = app
         # self.quad = QuadMesh(self.app)
         # self.triangle = TriangleMesh(self.app)
-        self.chunk = Chunk(self.app)
+        # self.chunk = Chunk(self.app)
+        self.world = World(app)
 
     def update(self):
-        pass
+        self.world.update()
 
     def render(self):
         # self.quad.render()
         # self.triangle.render()
-        self.chunk.render()
+        # self.chunk.render()
+        self.world.render()
