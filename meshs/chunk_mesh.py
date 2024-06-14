@@ -20,6 +20,8 @@ class ChunkMesh(BaseMesh):
     def get_vertex_data(self) -> np.array:
         mesh = build_chunk_mesh(
             chunk_voxels=self.chunk.voxels,
-            format_size=self.format_size
+            format_size=self.format_size,
+            chunk_pos=self.chunk.position,
+            world_voxel=self.chunk.world.voxels,
         )
         return mesh
